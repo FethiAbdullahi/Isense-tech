@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "title": "iSense Technologies | IP Security Solutions Ethiopia",
+    "description": "iSense Technologies by Ellis Trading House PLC — Ethiopian IP security solutions provider with 15+ years of experience in CCTV, access control, fire and intrusion alarms, and detection systems."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "specs": "Specifications",
+    "blog": "Briefing",
+    "contact": "Contact",
+    "admin": "Admin"
+  },
+  "hero": {
+    "kicker": "Command & control",
+    "title": "Physical security, commissioned with precision.",
+    "body": "iSense Technologies by Ellis Trading House PLC is a leading security solutions provider in Ethiopia with over 15 years of experience. We distribute, configure, and support complete IP security solutions from the world’s leading products and brands at affordable prices.",
+    "cta": "Request a site survey",
+    "secondary": "View systems",
+    "status": "GRID ONLINE · ADDIS ABABA"
+  },
+  "stats": {
+    "projects": "Projects done",
+    "partners": "Partners",
+    "years": "Years of experience",
+    "customers": "Customers"
+  },
+  "about": {
+    "kicker": "Who we are",
+    "title": "Fifteen years securing Ethiopian sites",
+    "p1": "iSense Technologies by Ellis Trading House PLC is a leading security solutions provider in Ethiopia with over 15 years of experience. iSense Technologies specialises in the distribution, configuration, and support of complete IP security solutions from the world’s leading products and brands at affordable prices.",
+    "p2": "We assist clients with configuration and commissioning of physical security systems including CCTV, access control, fire alarm, burglary alarm, metal/luggage detection solutions as well as last-mile fintech solutions.",
+    "p3": "We are a technology-driven company based in Addis Ababa, Ethiopia, founded in 2007. We are a leading product and solution provider, systems integrator, and distributor of sophisticated electronic security, safety, surveillance, and biometric systems.",
+    "passion": "For more than 15 years, we’ve been passionate about achieving better results for our clients.",
+    "visionTitle": "Vision",
+    "vision": "Taking physical security and automated workforce to the next level.",
+    "missionTitle": "Mission",
+    "mission": "To provide high quality, affordable and reliable physical security products and services through the expertise of our competent and seasoned professionals.",
+    "valuesTitle": "Values",
+    "serviceMinded": "Service minded",
+    "serviceMindedBody": "We understand the importance of customer support, always striving to deliver a superior customer experience.",
+    "innovative": "Innovative",
+    "innovativeBody": "We are always on the lookout for innovative new products and solutions to bring to market and finding new means of application.",
+    "flexible": "Flexible",
+    "flexibleBody": "We use our expert knowledge and extensive partner network to deliver innovative and customized solutions that meet our clients' specific needs.",
+    "projectsTitle": "Successful projects",
+    "whyTitle": "Why choose us?",
+    "whyBody": "Providing quality products and services has always been our manifesto in giving incredible service for so many years, setting us apart from our competition and putting us on the front seat in becoming your trusted security solutions provider."
+  },
+  "projects": {
+    "ethiopianAirlines": {
+      "name": "Ethiopian Airlines Cargo Terminal",
+      "system": "CCTV system",
+      "detail": "Successfully supplied and integrated video surveillance for the Ethiopian Airlines Cargo Terminal."
+    },
+    "officeOfPresident": {
+      "name": "Office of the President of the FDRE",
+      "system": "Walk-through machine",
+      "detail": "Successfully supplied and integrated a walk-through metal detector for the Federal Democratic Republic of Ethiopia, Office of the President."
+    },
+    "cdc": {
+      "name": "CDC — US Embassy / EHNRI",
+      "system": "Video surveillance and X-ray",
+      "detail": "Successfully supplied and integrated a video surveillance system and X-ray luggage scanner at the CDC office at EHNRI."
+    },
+    "coopBank": {
+      "name": "Co-operative Bank of Oromia",
+      "system": "CCTV and access control",
+      "detail": "Successfully supplied and integrated video surveillance and access control systems."
+    },
+    "uaeEmbassy": {
+      "name": "United Arab Emirates Embassy",
+      "system": "Biometric time attendance",
+      "detail": "Successfully supplied and implemented a biometric time attendance system at the Embassy of the United Arab Emirates."
+    }
+  },
+  "services": {
+    "kicker": "What we do",
+    "title": "Configuration, commissioning, and unrelenting support",
+    "intro": "We assist clients with configuration and commissioning of physical security systems. Support of complete IP security solutions from the world’s leading products and brands at affordable prices.",
+    "quality": "We provide quality services that outlast generations.",
+    "solutions": "We offer solutions to all your requirements.",
+    "support": "Our unrelenting support will guarantee our solutions never fail.",
+    "partner": "Your partner for safer, smarter security solutions",
+    "items": {
+      "design": {
+        "title": "Systems design",
+        "body": "Site-specific designs that combine CCTV, fire, biometric attendance, access control, ID, metal detection, and intrusion into one command-and-control picture."
+      },
+      "commission": {
+        "title": "Configuration & commissioning",
+        "body": "We configure, install, and commission physical security systems so they operate as a single, supported platform."
+      },
+      "support": {
+        "title": "Lifecycle support",
+        "body": "Distribution and after-sales support for complete IP security stacks at affordable prices."
+      }
+    }
+  },
+  "industries": {
+    "title": "Sector solutions",
+    "industry": {
+      "title": "Industry",
+      "body": "iSense Technologies integrates all systems to provide a designed solution to monitor factory and site perimeters, manufacturing production lines or factory robots and send alerts if something unusual occurs — using CCTV, fire alarm, biometric time attendance, access control, ID solutions, metal detector and intruder alarm to give you a command-and-control centre that can ensure compliance to the strictest security and business continuity."
+    },
+    "government": {
+      "title": "Government",
+      "body": "Government organisations of all sizes benefit from our video management systems to improve public safety. Biometric time & attendance within government facilities reduces administrative burden, eliminates lost wages due to timesheet errors or buddy punching, and allows real-time reports on employee attendance and job costing."
+    },
+    "hotels": {
+      "title": "Hotels",
+      "body": "We provide card keys, locks, safes and biometric systems, CCTV to monitor, record and survey hotel premises, and programmes that protect proprietary information of the hotel and their guests."
+    },
+    "commercial": {
+      "title": "Commercial",
+      "body": "Shoplifting, fraud, and inventory shrinkage affect retailer profits every year. Video devices, motion detectors, fire alarms, metal detectors and access control are used worldwide to protect commercial establishments. With the solutions we provide, enterprises can prevent these activities and recover lost items."
+    },
+    "healthcare": {
+      "title": "Health care",
+      "body": "In a healthcare setting, disorderly conduct can have serious consequences. A network of video surveillance cameras, access control, and hospital-wide security protocols helps deter and mitigate incidents before they become a distraction for doctors and nurses."
+    },
+    "banking": {
+      "title": "Banking sector",
+      "body": "We provide advanced security solutions for banks. Understanding the business environment is crucial so the solution has the capabilities you need — access control, surveillance cameras, or fire alarm — to protect employees, facilities, and client assets."
+    }
+  },
+  "products": {
+    "kicker": "Product catalogue",
+    "title": "Complete IP security stack",
+    "intro": "CCTV, access control, fire alarm, burglary alarm, metal/luggage detection — plus Unif1ed HRM, our in-house workforce platform.",
+    "viewSpecs": "Open specifications",
+    "homeProtectTitle": "Protect your home & business",
+    "homeProtectBody": "By utilising an intrusion alarm system, intruders can be detected when attempting to enter a secured area and an audible or visual alarm can be activated on site while simultaneously sending an alert to a registered phone number, where it is handled by the customer.",
+    "accessTitle": "Bringing down walls in a corporate world using access control",
+    "accessBody": "Access control is focused on controlling who has access, e.g. to an office or facility. This is typically achieved by restricting access by certain types of groups or access levels.",
+    "items": {
+      "cctv": {
+        "name": "CCTV system",
+        "summary": "IP video surveillance and video management for perimeters, interiors, and command centres.",
+        "long": "Network cameras, recording, and video management designed for factories, banks, hotels, healthcare, and government sites. We supply, configure, and commission systems that monitor, record, and alert."
+      },
+      "access-control": {
+        "name": "Access control",
+        "summary": "Who enters, when, and at which door — by group or clearance level.",
+        "long": "Biometric, card, and PIN terminals, locks, and door controllers. Restrict access by groups or access levels across offices and facilities."
+      },
+      "time-attendance": {
+        "name": "Time & attendance",
+        "summary": "Biometric workforce capture that feeds payroll and live reports.",
+        "long": "Fingerprint, face, card, and PIN devices for attendance. Eliminates timesheet errors and buddy punching, with real-time reporting."
+      },
+      "intrusion-alarms": {
+        "name": "Intrusion alarm systems",
+        "summary": "Detect entry, raise the alarm on site, and notify a registered phone.",
+        "long": "Intruders attempting a secured area trigger audible or visual alarms on site while an alert is sent to a registered number handled by the customer."
+      },
+      "metal-detection": {
+        "name": "Metal & luggage detection",
+        "summary": "Walk-through metal detectors and X-ray inspection systems.",
+        "long": "Walk-through machines and X-ray luggage scanners for government, aviation-adjacent, and high-security facilities."
+      },
+      "fire-alarm": {
+        "name": "Fire alarm",
+        "summary": "Fire detection integrated into the same command picture as video and access.",
+        "long": "Fire alarm design and commissioning as part of complete physical security solutions for industrial, commercial, and institutional sites."
+      },
+      "unified-hrm": {
+        "name": "Unif1ed HRM",
+        "summary": "In-house SaaS that unifies devices from different manufacturers for attendance and payroll.",
+        "long": "Unif1ed HRM is our premiere in-house product — employee management and payroll software that unifies fingerprint, face, card, and PIN devices. Delivered as SaaS, with unlimited employees, flexible shifts, breaks, Ethiopian income tax and pension, and custom reports."
+      }
+    }
+  },
+  "specs": {
+    "kicker": "Technical file",
+    "title": "Specifications",
+    "back": "All systems",
+    "rowsTitle": "Capability matrix"
+  },
+  "specRows": {
+    "cctv": [
+      { "label": "Architecture", "value": "IP CCTV with video management and recording" },
+      { "label": "Coverage", "value": "Perimeters, production lines, interiors, public areas" },
+      { "label": "Alerting", "value": "Unusual activity alerts into a command-and-control view" },
+      { "label": "Commissioning", "value": "Supply, configuration, and on-site integration" },
+      { "label": "Typical sites", "value": "Industry, government, hotels, banks, healthcare" }
+    ],
+    "access-control": [
+      { "label": "Identity methods", "value": "Fingerprint, face, card, PIN" },
+      { "label": "Policy", "value": "Group and access-level restrictions" },
+      { "label": "Hardware", "value": "Terminals, locks, controllers, turnstiles and gates" },
+      { "label": "Software", "value": "Unif1ed HRM or manufacturer platforms as required" },
+      { "label": "Outcome", "value": "Controlled entry to offices and facilities" }
+    ],
+    "time-attendance": [
+      { "label": "Capture", "value": "Biometric and credential clocks" },
+      { "label": "Scale", "value": "Unlimited employees and shift configurations in Unif1ed HRM" },
+      { "label": "Breaks", "value": "Tea, lunch, and custom break rules" },
+      { "label": "Payroll", "value": "Attendance-driven salary calculation, tax and pension" },
+      { "label": "Reports", "value": "Real-time attendance and job-costing reports" }
+    ],
+    "intrusion-alarms": [
+      { "label": "Detection", "value": "Attempted entry into a secured area" },
+      { "label": "Local alarm", "value": "Audible or visual alarm on site" },
+      { "label": "Remote alert", "value": "Notification to a registered phone number" },
+      { "label": "Handling", "value": "Alert handled by the customer" },
+      { "label": "Use", "value": "Homes and businesses" }
+    ],
+    "metal-detection": [
+      { "label": "Walk-through", "value": "Metal detector gates for high-security entries" },
+      { "label": "X-ray", "value": "Luggage / baggage inspection scanners" },
+      { "label": "Delivered at", "value": "Office of the President (FDRE); CDC / EHNRI" },
+      { "label": "Integration", "value": "Alongside CCTV and access for layered screening" }
+    ],
+    "fire-alarm": [
+      { "label": "Role", "value": "Life-safety detection as part of the physical security design" },
+      { "label": "Integration", "value": "Combined with CCTV, access, and intrusion on industrial and commercial sites" },
+      { "label": "Support", "value": "Configuration, commissioning, and ongoing support" }
+    ],
+    "unified-hrm": [
+      { "label": "Product type", "value": "In-house SaaS — employee management and payroll" },
+      { "label": "Device unification", "value": "Works across manufacturers we import" },
+      { "label": "Attendance", "value": "Configurable shifts, breaks, unlimited employees" },
+      { "label": "Payroll", "value": "Paycheck generation with Ethiopian income tax and pension" },
+      { "label": "Development", "value": "Custom features by our development team on request" }
+    ]
+  },
+  "social": {
+    "kicker": "External feeds",
+    "title": "Surveillance wall",
+    "empty": "Camera wall is dark. Admins can add Instagram, LinkedIn, and Facebook posts from the control room.",
+    "open": "Open original feed"
+  },
+  "blog": {
+    "kicker": "Field notes",
+    "title": "Briefing room",
+    "empty": "No published briefings yet.",
+    "read": "Read briefing",
+    "back": "All briefings"
+  },
+  "contact": {
+    "kicker": "Live location",
+    "title": "Head office, Addis Ababa",
+    "details": "Contact details",
+    "offices": "Our offices",
+    "hours": "Business hours",
+    "formTitle": "Send a message",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone number",
+    "message": "Message",
+    "submit": "Submit",
+    "sent": "Message received. The operations desk will respond during business hours.",
+    "error": "Could not send. Email us directly or try again.",
+    "mapLabel": "Embedded map — iSense Technologies"
+  },
+  "footer": {
+    "rights": "iSense Technologies by Ellis Trading House PLC. All rights reserved.",
+    "call": "Call today",
+    "fax": "Fax us",
+    "email": "Email us"
+  },
+  "chat": {
+    "title": "Support channel",
+    "placeholder": "Ask about systems, Unif1ed HRM, or the office…",
+    "send": "Send",
+    "intro": "Ops desk online. Ask about products, projects, hours, or how to reach us."
+  },
+  "whatsapp": {
+    "label": "WhatsApp the team"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "getInTouch": "Get in touch"
+  }
+}

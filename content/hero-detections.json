@@ -1,0 +1,104 @@
+{
+  "version": 7,
+  "video": {
+    "night": "/media/hero-night.mp4",
+    "day": "/media/hero-day.mp4",
+    "posterNight": "/media/hero-night.jpg",
+    "posterDay": "/media/hero-day.jpg",
+    "aspect": { "w": 16, "h": 9 },
+    "duration": 12
+  },
+  "caption": "CAM 01 · MAIN GATE",
+  "themes": {
+    "dark": {
+      "tracks": [
+        {
+          "id": "v1",
+          "kind": "vehicle",
+          "label": "Vehicle",
+          "baseConfidence": 0.97,
+          "visible": { "from": 0.0, "to": 12.0 },
+          "keyframes": [
+            { "t": 0.0, "x": 0.05, "y": 0.5, "w": 0.44, "h": 0.32 },
+            { "t": 12.0, "x": 0.05, "y": 0.5, "w": 0.44, "h": 0.32 }
+          ],
+          "children": [
+            {
+              "id": "v1-plate",
+              "label": "Plate",
+              "visible": { "from": 0.0, "to": 12.0 },
+              "relative": { "x": 0.02, "y": 0.42, "w": 0.18, "h": 0.14 }
+            }
+          ]
+        },
+        {
+          "id": "p1",
+          "kind": "person",
+          "label": "Person",
+          "baseConfidence": 0.96,
+          "visible": { "from": 0.0, "to": 12.0 },
+          "keyframes": [
+            { "t": 0.0, "x": 0.68, "y": 0.46, "w": 0.085, "h": 0.28 },
+            { "t": 12.0, "x": 0.68, "y": 0.46, "w": 0.085, "h": 0.28 }
+          ]
+        },
+        {
+          "id": "gate",
+          "kind": "zone",
+          "label": "Gate",
+          "baseConfidence": 0.93,
+          "visible": { "from": 0.0, "to": 12.0 },
+          "keyframes": [
+            { "t": 0.0, "x": 0.7, "y": 0.28, "w": 0.28, "h": 0.55 },
+            { "t": 12.0, "x": 0.7, "y": 0.28, "w": 0.28, "h": 0.55 }
+          ]
+        }
+      ]
+    },
+    "light": {
+      "tracks": [
+        {
+          "id": "v1",
+          "kind": "vehicle",
+          "label": "Vehicle",
+          "baseConfidence": 0.97,
+          "visible": { "from": 0.0, "to": 12.0 },
+          "keyframes": [
+            { "t": 0.0, "x": 0.26, "y": 0.58, "w": 0.36, "h": 0.4 },
+            { "t": 12.0, "x": 0.26, "y": 0.58, "w": 0.36, "h": 0.4 }
+          ],
+          "children": [
+            {
+              "id": "v1-plate",
+              "label": "Plate",
+              "visible": { "from": 0.0, "to": 12.0 },
+              "relative": { "x": 0.08, "y": 0.82, "w": 0.28, "h": 0.12 }
+            }
+          ]
+        },
+        {
+          "id": "p1",
+          "kind": "person",
+          "label": "Person",
+          "baseConfidence": 0.95,
+          "visible": { "from": 0.0, "to": 12.0 },
+          "keyframes": [
+            { "t": 0.0, "x": 0.11, "y": 0.5, "w": 0.06, "h": 0.3 },
+            { "t": 12.0, "x": 0.11, "y": 0.5, "w": 0.06, "h": 0.3 }
+          ]
+        },
+        {
+          "id": "gate",
+          "kind": "zone",
+          "label": "Gate",
+          "baseConfidence": 0.93,
+          "visible": { "from": 0.0, "to": 12.0 },
+          "keyframes": [
+            { "t": 0.0, "x": 0.42, "y": 0.4, "w": 0.3, "h": 0.5 },
+            { "t": 12.0, "x": 0.42, "y": 0.4, "w": 0.3, "h": 0.5 }
+          ]
+        }
+      ]
+    }
+  }
+}
