@@ -187,7 +187,7 @@ function FeedShell({
   return (
     <article
       className={cn(
-        "flex h-[550px] flex-col overflow-hidden rounded-[16px] border border-border bg-panel shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.28)]",
+        "flex h-[550px] flex-col overflow-hidden rounded-sm border border-border bg-panel text-foreground shadow-[var(--shadow)]",
         className,
       )}
     >
@@ -201,26 +201,24 @@ function InstagramCard({ posts }: { posts: SocialFeedPost[] }) {
   const t = useTranslations("social");
 
   return (
-    <FeedShell className="bg-[#0a0a0a] text-white [[data-theme=light]_&]:bg-white [[data-theme=light]_&]:text-neutral-900">
+    <FeedShell>
       <a
         href={profile.followUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="sticky top-0 z-10 flex items-center gap-3 border-b border-white/10 bg-[#0a0a0a]/95 px-3.5 py-3 backdrop-blur [[data-theme=light]_&]:border-neutral-200 [[data-theme=light]_&]:bg-white/95"
+        className="sticky top-0 z-10 flex items-center gap-3 border-b border-border bg-panel px-3.5 py-3"
       >
         <PlatformAvatar platform="instagram" size="md" ring />
         <div className="min-w-0 flex-1">
           <p className="flex items-center gap-1 text-sm font-semibold">
             <span className="truncate">{profile.handle}</span>
             {profile.verified ? (
-              <VerifiedBadge className="text-[#3897f0]" />
+              <VerifiedBadge className="text-accent" />
             ) : null}
           </p>
-          <p className="truncate text-xs text-white/55 [[data-theme=light]_&]:text-neutral-500">
-            Addis Ababa
-          </p>
+          <p className="truncate text-xs text-text-secondary">Addis Ababa</p>
         </div>
-        <MoreHorizontal className="size-5 text-white/70 [[data-theme=light]_&]:text-neutral-500" />
+        <MoreHorizontal className="size-5 text-text-secondary" />
       </a>
 
       <div className="min-h-0 flex-1 space-y-5 overflow-y-auto overscroll-contain px-0 py-2">
@@ -235,9 +233,9 @@ function InstagramCard({ posts }: { posts: SocialFeedPost[] }) {
             <div className="flex items-center gap-2.5 px-3.5 pb-2">
               <PlatformAvatar platform="instagram" size="sm" ring />
               <p className="text-[13px] font-semibold">{profile.handle}</p>
-              <span className="text-xs text-white/45">· {post.date}</span>
+              <span className="text-xs text-text-secondary">· {post.date}</span>
             </div>
-            <div className="aspect-[4/5] w-full overflow-hidden bg-neutral-900">
+            <div className="aspect-[4/5] w-full overflow-hidden bg-background">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={post.imageUrl}
@@ -250,22 +248,20 @@ function InstagramCard({ posts }: { posts: SocialFeedPost[] }) {
                 <LikeButton
                   initial={post.likes}
                   icon={Heart}
-                  activeClass="text-[#ff3040]"
-                  idleClass="text-white hover:text-white/70 [[data-theme=light]_&]:text-neutral-800"
+                  activeClass="text-danger"
+                  idleClass="text-foreground hover:text-accent"
                 />
-                <span className="inline-flex items-center gap-1 text-[13px] text-white/80">
+                <span className="inline-flex items-center gap-1 text-[13px] text-text-secondary">
                   <MessageCircle className="size-4" />
                   {formatCount(post.comments)}
                 </span>
-                <Send className="size-4 text-white/80" />
+                <Send className="size-4 text-text-secondary" />
               </div>
-              <Bookmark className="size-4 text-white/80" />
+              <Bookmark className="size-4 text-text-secondary" />
             </div>
             <p className="px-3.5 pt-1.5 text-[13px] leading-snug">
               <span className="font-semibold">{profile.handle}</span>{" "}
-              <span className="text-white/85 [[data-theme=light]_&]:text-neutral-700">
-                {post.content}
-              </span>
+              <span className="text-text-secondary">{post.content}</span>
             </p>
           </a>
         ))}
@@ -275,7 +271,7 @@ function InstagramCard({ posts }: { posts: SocialFeedPost[] }) {
         href={profile.followUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="border-t border-white/10 px-3.5 py-3 text-center text-sm font-semibold text-[#3897f0] transition hover:bg-white/5"
+        className="border-t border-border px-3.5 py-3 text-center text-sm font-semibold text-accent transition hover:bg-panel-elevated/50"
       >
         {t("followInstagram")}
       </a>
@@ -288,24 +284,24 @@ function FacebookCard({ posts }: { posts: SocialFeedPost[] }) {
   const t = useTranslations("social");
 
   return (
-    <FeedShell className="bg-[#242526] text-[#e4e6eb] [[data-theme=light]_&]:bg-white [[data-theme=light]_&]:text-neutral-900">
+    <FeedShell>
       <a
         href={profile.followUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="sticky top-0 z-10 flex items-center gap-3 border-b border-white/10 bg-[#242526]/95 px-3.5 py-3 backdrop-blur [[data-theme=light]_&]:border-neutral-200 [[data-theme=light]_&]:bg-white/95"
+        className="sticky top-0 z-10 flex items-center gap-3 border-b border-border bg-panel px-3.5 py-3"
       >
         <PlatformAvatar platform="facebook" size="md" />
         <div className="min-w-0 flex-1">
-          <p className="flex items-center gap-1 text-sm font-semibold text-[#e7f3ff] [[data-theme=light]_&]:text-[#0866ff]">
+          <p className="flex items-center gap-1 text-sm font-semibold text-foreground">
             <span className="truncate">{profile.name}</span>
             {profile.verified ? (
-              <VerifiedBadge className="text-[#0866ff]" />
+              <VerifiedBadge className="text-accent" />
             ) : null}
           </p>
-          <p className="text-xs text-[#b0b3b8]">Facebook Page</p>
+          <p className="text-xs text-text-secondary">Facebook Page</p>
         </div>
-        <MoreHorizontal className="size-5 text-[#b0b3b8]" />
+        <MoreHorizontal className="size-5 text-text-secondary" />
       </a>
 
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain p-3">
@@ -315,20 +311,20 @@ function FacebookCard({ posts }: { posts: SocialFeedPost[] }) {
             href={post.postUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block overflow-hidden rounded-xl border border-white/10 bg-[#3a3b3c]/40 [[data-theme=light]_&]:border-neutral-200 [[data-theme=light]_&]:bg-neutral-50"
+            className="block overflow-hidden rounded-sm border border-border bg-panel-elevated/40"
           >
             <div className="flex items-start gap-2.5 px-3 pt-3">
               <PlatformAvatar platform="facebook" size="sm" />
               <div className="min-w-0">
                 <p className="text-sm font-semibold">{profile.name}</p>
-                <p className="flex items-center gap-1 text-[11px] text-[#b0b3b8]">
+                <p className="flex items-center gap-1 text-[11px] text-text-secondary">
                   {post.date}
                   <Globe2 className="size-3" />
                 </p>
               </div>
             </div>
             <p className="px-3 pt-2 text-[14px] leading-snug">{post.content}</p>
-            <div className="mt-2 aspect-[16/10] w-full overflow-hidden bg-black/30">
+            <div className="mt-2 aspect-[16/10] w-full overflow-hidden bg-background">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={post.imageUrl}
@@ -336,19 +332,19 @@ function FacebookCard({ posts }: { posts: SocialFeedPost[] }) {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="flex items-center justify-between border-t border-white/10 px-2 py-1.5 text-[#b0b3b8] [[data-theme=light]_&]:border-neutral-200">
+            <div className="flex items-center justify-between border-t border-border px-2 py-1.5 text-text-secondary">
               <LikeButton
                 initial={post.likes}
                 icon={ThumbsUp}
                 label="Like"
-                activeClass="text-[#0866ff]"
-                idleClass="hover:bg-white/5"
+                activeClass="text-accent"
+                idleClass="hover:bg-panel/60"
               />
-              <span className="inline-flex items-center gap-1.5 rounded-lg px-1.5 py-1 text-[13px]">
+              <span className="inline-flex items-center gap-1.5 rounded-sm px-1.5 py-1 text-[13px]">
                 <MessageCircle className="size-4" />
                 Comment
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-lg px-1.5 py-1 text-[13px]">
+              <span className="inline-flex items-center gap-1.5 rounded-sm px-1.5 py-1 text-[13px]">
                 <Share2 className="size-4" />
                 Share
               </span>
@@ -361,7 +357,7 @@ function FacebookCard({ posts }: { posts: SocialFeedPost[] }) {
         href={profile.followUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="border-t border-white/10 px-3.5 py-3 text-center text-sm font-semibold text-[#0866ff] transition hover:bg-white/5"
+        className="border-t border-border px-3.5 py-3 text-center text-sm font-semibold text-accent transition hover:bg-panel-elevated/50"
       >
         {t("followFacebook")}
       </a>
@@ -374,26 +370,26 @@ function LinkedInCard({ posts }: { posts: SocialFeedPost[] }) {
   const t = useTranslations("social");
 
   return (
-    <FeedShell className="bg-[#1b1f23] text-[#f3f2ef] [[data-theme=light]_&]:bg-white [[data-theme=light]_&]:text-neutral-900">
+    <FeedShell>
       <a
         href={profile.followUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="sticky top-0 z-10 flex items-center gap-3 border-b border-white/10 bg-[#1b1f23]/95 px-3.5 py-3 backdrop-blur [[data-theme=light]_&]:border-neutral-200 [[data-theme=light]_&]:bg-white/95"
+        className="sticky top-0 z-10 flex items-center gap-3 border-b border-border bg-panel px-3.5 py-3"
       >
         <PlatformAvatar platform="linkedin" size="lg" />
         <div className="min-w-0 flex-1">
           <p className="flex items-center gap-1 text-sm font-semibold">
             <span className="truncate">{profile.name}</span>
             {profile.verified ? (
-              <VerifiedBadge className="text-[#0a66c2]" />
+              <VerifiedBadge className="text-accent" />
             ) : null}
           </p>
-          <p className="truncate text-xs text-[#a6a9ad]">
+          <p className="truncate text-xs text-text-secondary">
             {profile.headline}
           </p>
         </div>
-        <MoreHorizontal className="size-5 text-[#a6a9ad]" />
+        <MoreHorizontal className="size-5 text-text-secondary" />
       </a>
 
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain p-3">
@@ -408,16 +404,16 @@ function LinkedInCard({ posts }: { posts: SocialFeedPost[] }) {
               href={post.postUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block overflow-hidden rounded-xl border border-white/10 bg-[#2a2e33]/50 [[data-theme=light]_&]:border-neutral-200 [[data-theme=light]_&]:bg-neutral-50"
+              className="block overflow-hidden rounded-sm border border-border bg-panel-elevated/40"
             >
               <div className="flex items-start gap-2.5 px-3 pt-3">
                 <PlatformAvatar platform="linkedin" size="md" />
                 <div className="min-w-0">
                   <p className="text-sm font-semibold">{profile.name}</p>
-                  <p className="truncate text-[11px] text-[#a6a9ad]">
+                  <p className="truncate text-[11px] text-text-secondary">
                     {post.headline || profile.headline}
                   </p>
-                  <p className="flex items-center gap-1 text-[11px] text-[#a6a9ad]">
+                  <p className="flex items-center gap-1 text-[11px] text-text-secondary">
                     {post.date}
                     <Globe2 className="size-3" />
                   </p>
@@ -426,13 +422,13 @@ function LinkedInCard({ posts }: { posts: SocialFeedPost[] }) {
               <p className="px-3 pt-2 text-[14px] leading-snug">
                 {truncated}{" "}
                 {post.content.length > 140 ? (
-                  <span className="font-semibold text-[#a6a9ad]">
+                  <span className="font-semibold text-text-secondary">
                     {t("seeMore")}
                   </span>
                 ) : null}
               </p>
-              <div className="mx-3 mt-3 overflow-hidden rounded-lg border border-white/10 [[data-theme=light]_&]:border-neutral-200">
-                <div className="aspect-[16/9] w-full overflow-hidden bg-black/30">
+              <div className="mx-3 mt-3 overflow-hidden rounded-sm border border-border">
+                <div className="aspect-[16/9] w-full overflow-hidden bg-background">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={post.imageUrl}
@@ -440,34 +436,34 @@ function LinkedInCard({ posts }: { posts: SocialFeedPost[] }) {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <div className="bg-[#1b1f23] px-3 py-2 [[data-theme=light]_&]:bg-neutral-100">
+                <div className="bg-panel px-3 py-2">
                   <p className="text-[13px] font-semibold">
                     {post.mediaTitle || "iSense Technologies"}
                   </p>
-                  <p className="text-[11px] text-[#a6a9ad]">
+                  <p className="text-[11px] text-text-secondary">
                     {post.mediaSubtitle || "isense-tech.com"}
                   </p>
                 </div>
               </div>
-              <div className="mt-2 flex flex-wrap items-center gap-1 border-t border-white/10 px-2 py-1.5 text-[#a6a9ad] [[data-theme=light]_&]:border-neutral-200">
+              <div className="mt-2 flex flex-wrap items-center gap-1 border-t border-border px-2 py-1.5 text-text-secondary">
                 <LikeButton
                   initial={post.likes}
                   icon={ThumbsUp}
                   label="Like"
-                  activeClass="text-[#0a66c2]"
-                  idleClass="hover:bg-white/5"
+                  activeClass="text-accent"
+                  idleClass="hover:bg-panel/60"
                 />
-                <span className="inline-flex items-center gap-1 rounded-lg px-1.5 py-1 text-[12px]">
-                  👏 Celebrate
+                <span className="inline-flex items-center gap-1 rounded-sm px-1.5 py-1 text-[12px]">
+                  Celebrate
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-lg px-1.5 py-1 text-[12px]">
-                  💚 Support
+                <span className="inline-flex items-center gap-1 rounded-sm px-1.5 py-1 text-[12px]">
+                  Support
                 </span>
-                <span className="ml-auto inline-flex items-center gap-1 rounded-lg px-1.5 py-1 text-[12px]">
+                <span className="ml-auto inline-flex items-center gap-1 rounded-sm px-1.5 py-1 text-[12px]">
                   <MessageCircle className="size-3.5" />
                   {formatCount(post.comments)}
                 </span>
-                <span className="inline-flex items-center gap-1 rounded-lg px-1.5 py-1 text-[12px]">
+                <span className="inline-flex items-center gap-1 rounded-sm px-1.5 py-1 text-[12px]">
                   <Repeat2 className="size-3.5" />
                   Repost
                 </span>
@@ -481,7 +477,7 @@ function LinkedInCard({ posts }: { posts: SocialFeedPost[] }) {
         href={profile.followUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="border-t border-white/10 px-3.5 py-3 text-center text-sm font-semibold text-[#0a66c2] transition hover:bg-white/5"
+        className="border-t border-border px-3.5 py-3 text-center text-sm font-semibold text-accent transition hover:bg-panel-elevated/50"
       >
         {t("followLinkedin")}
       </a>
@@ -497,7 +493,7 @@ export function SocialFeed() {
   return (
     <section
       id="feeds"
-      className="scroll-mt-28 border-y border-border bg-[radial-gradient(ellipse_at_20%_0%,color-mix(in_srgb,var(--accent)_14%,transparent),transparent_50%)] py-20 md:py-28"
+      className="scroll-mt-28 border-y border-border bg-panel/30 py-20 md:py-28"
     >
       <Container>
         <SectionHeader

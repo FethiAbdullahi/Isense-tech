@@ -1,32 +1,48 @@
 @import "tailwindcss";
 
-/* Tokens live on html so Tailwind v4 does not strip them from :root. */
+/* Graphite Signal — charcoal surfaces, amber brand accent (never Apple blue). */
 html,
 html[data-theme="dark"] {
-  --background: #000000;
-  --panel: #07090d;
-  --border: #1d1d1f;
-  --text: #f5f5f7;
-  --text-secondary: #a1a1a6;
-  --accent: #2997ff;
-  --on-accent: #000011;
-  --warning: #ff9f0a;
-  --danger: #ff453a;
-  --shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  --background: #121417;
+  --panel: #1c1f24;
+  --panel-elevated: #2a2e35;
+  --border: #3a4049;
+  --text: #eceef1;
+  --text-secondary: #9aa0a8;
+  --accent: #f0a030;
+  --on-accent: #141210;
+  --warning: #e8a020;
+  --danger: #e85a4a;
+  --signal: #5ec8d8;
+  --shadow: 0 12px 40px rgba(8, 10, 14, 0.55);
+  --shear: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--panel-elevated) 40%, transparent) 0%,
+    transparent 42%,
+    color-mix(in srgb, var(--accent) 4%, transparent) 100%
+  );
   color-scheme: dark;
 }
 
 html[data-theme="light"] {
-  --background: #ffffff;
-  --panel: #f5f5f7;
-  --border: #d2d2d7;
-  --text: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --accent: #0071e3;
+  --background: #e8eaed;
+  --panel: #f4f5f7;
+  --panel-elevated: #ffffff;
+  --border: #c5cad3;
+  --text: #1a1d22;
+  --text-secondary: #5c6570;
+  --accent: #c47818;
   --on-accent: #ffffff;
-  --warning: #c93400;
-  --danger: #d70015;
-  --shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+  --warning: #b86a10;
+  --danger: #c43c30;
+  --signal: #2a8a9a;
+  --shadow: 0 12px 36px rgba(26, 29, 34, 0.1);
+  --shear: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--panel-elevated) 70%, transparent) 0%,
+    transparent 45%,
+    color-mix(in srgb, var(--accent) 6%, transparent) 100%
+  );
   color-scheme: light;
 }
 
@@ -34,6 +50,7 @@ html[data-theme="light"] {
   --color-background: var(--background);
   --color-foreground: var(--text);
   --color-panel: var(--panel);
+  --color-panel-elevated: var(--panel-elevated);
   --color-border: var(--border);
   --color-text: var(--text);
   --color-text-secondary: var(--text-secondary);
@@ -48,10 +65,10 @@ html[data-theme="light"] {
   --color-steel: var(--text-secondary);
   --color-steel-dim: var(--text-secondary);
   --color-steel-line: var(--border);
-  --color-signal: var(--warning);
-  --color-panel-elevated: var(--panel);
-  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-display: var(--font-sora), "Sora", system-ui, sans-serif;
+  --color-signal: var(--signal);
+  --font-sans: var(--font-manrope), "Manrope", system-ui, sans-serif;
+  --font-display: var(--font-syne), "Syne", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
   --font-ethiopic: var(--font-noto-ethiopic);
   --font-arabic: var(--font-noto-arabic);
 }
@@ -62,11 +79,29 @@ html {
 }
 
 body {
+  position: relative;
   min-height: 100%;
   background: var(--background);
   color: var(--text);
-  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: var(--font-manrope), "Manrope", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Soft film grain — atmosphere without glow effects */
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+html[data-theme="light"] body::before {
+  opacity: 0.03;
+  mix-blend-mode: multiply;
 }
 
 html[lang="am"] body {
@@ -81,9 +116,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-sora), "Sora", system-ui, sans-serif;
+  font-family: var(--font-syne), "Syne", system-ui, sans-serif;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   text-transform: none;
   color: var(--text);
 }
@@ -103,7 +138,7 @@ html[lang="ar"] h4 {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
   color: var(--text);
 }
 
@@ -112,10 +147,57 @@ html[lang="ar"] h4 {
   outline-offset: 3px;
 }
 
+/* Graphite panel — hairline, modest cut corners (not soft card farm) */
 .card-surface {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 22px;
+  border-radius: 4px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+.panel-shear {
+  background-image: var(--shear);
+}
+
+.clip-angle {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
+@keyframes partner-rail {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-rail-track {
+  animation: partner-rail 48s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-rail-track {
+    animation: none;
+  }
+
+  body::before {
+    opacity: 0.02;
+  }
 }
 
 .prose-security a {

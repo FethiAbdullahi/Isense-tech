@@ -10,7 +10,7 @@ export function ContactForm() {
 
   return (
     <form
-      className="space-y-5 rounded-[32px] border border-border bg-panel p-7 md:p-8"
+      className="space-y-5 rounded-sm border border-border bg-panel p-7 md:p-8"
       onSubmit={async (e) => {
         e.preventDefault();
         const form = e.currentTarget;

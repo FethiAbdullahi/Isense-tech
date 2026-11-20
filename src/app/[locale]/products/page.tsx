@@ -32,9 +32,11 @@ export default async function ProductsPage({
 
         <div
           id="partners"
-          className="mt-10 scroll-mt-28 rounded-[22px] border border-border bg-panel/50 p-5 md:p-6"
+          className="mt-10 scroll-mt-28 rounded-sm border border-border bg-panel/50 p-5 md:p-6"
         >
-          <p className="text-sm font-medium text-accent">{tHome("partnersKicker")}</p>
+          <p className="font-mono text-[11px] font-medium tracking-[0.18em] text-accent uppercase">
+            {tHome("partnersKicker")}
+          </p>
           <p className="mt-1 text-sm text-text-secondary">{tHome("partnersLead")}</p>
           <ul className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
             {partners.map((partner) => (
@@ -44,13 +46,13 @@ export default async function ProductsPage({
                   href={partner.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-16 items-center justify-center rounded-xl border border-border bg-white px-3 transition hover:border-accent/40"
+                  className="group flex h-16 items-center justify-center rounded-sm border border-border bg-panel px-3 transition hover:border-accent/50"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="max-h-9 max-w-full object-contain"
+                    className="max-h-9 max-w-full object-contain opacity-70 grayscale transition group-hover:opacity-100 group-hover:grayscale-0"
                   />
                 </a>
               </li>
@@ -66,7 +68,7 @@ export default async function ProductsPage({
               <Link
                 key={id}
                 href={`/products/${id}`}
-                className="group overflow-hidden rounded-[28px] border border-border bg-panel transition hover:border-accent/40 hover:shadow-[var(--shadow)]"
+                className="group overflow-hidden rounded-sm border border-border bg-panel transition hover:border-accent/40 hover:shadow-[var(--shadow)]"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -100,7 +102,7 @@ export default async function ProductsPage({
               <Link
                 key={product.id}
                 href={`/products/${product.id}`}
-                className="group rounded-[28px] border border-border bg-panel/40 p-6 transition hover:border-accent/40 hover:bg-panel"
+                className="group rounded-sm border border-border bg-panel/40 p-6 transition hover:border-accent/40 hover:bg-panel"
               >
                 <h3 className="font-display text-2xl text-foreground">{t(product.id)}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-text-secondary">

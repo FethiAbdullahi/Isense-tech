@@ -65,30 +65,30 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter] duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-[background,border-color] duration-300",
         scrolled || open
-          ? "border-b border-border bg-background/90 backdrop-blur-2xl"
+          ? "border-b border-border bg-background/95"
           : "border-b border-transparent bg-transparent",
       )}
     >
       <div className={cn(shellClassName, "flex h-14 items-center justify-between gap-4 md:h-16")}>
         <Link href="/" className="relative z-10 shrink-0" onClick={() => setOpen(false)}>
           <Image
-            src="/logo.png"
+            src="/logo-full.png"
             alt={siteConfig.name}
-            width={140}
-            height={48}
-            className="h-8 w-auto [[data-theme=light]_&]:invert"
+            width={160}
+            height={56}
+            className="h-8 w-auto"
             priority
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-[13px] text-text-secondary transition-colors hover:text-foreground"
+              className="font-sans text-[13px] text-text-secondary transition-colors hover:text-accent"
             >
               {t(link.key)}
             </Link>
@@ -103,7 +103,7 @@ export function Header() {
         <button
           type="button"
           data-menu-toggle
-          className="relative z-50 inline-flex size-10 items-center justify-center rounded-full border border-border text-text-secondary lg:hidden"
+          className="relative z-50 inline-flex size-10 items-center justify-center rounded-sm border border-border text-text-secondary lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -117,12 +117,12 @@ export function Header() {
           <button
             type="button"
             aria-label="Close menu"
-            className="fixed inset-0 z-40 bg-background/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-background/70 lg:hidden"
             onClick={() => setOpen(false)}
           />
           <div
             ref={panelRef}
-            className="absolute inset-x-0 top-full z-50 mx-3 mt-2 overflow-hidden rounded-3xl border border-border bg-background shadow-[var(--shadow)] lg:hidden"
+            className="absolute inset-x-0 top-full z-50 mx-3 mt-2 overflow-hidden rounded-sm border border-border bg-panel shadow-[var(--shadow)] lg:hidden"
           >
             <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-4">
               <LocaleSwitcher />
@@ -134,7 +134,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-2xl px-4 py-3.5 font-display text-lg tracking-tight text-foreground transition hover:bg-panel"
+                  className="rounded-sm px-4 py-3.5 font-display text-lg tracking-tight text-foreground transition hover:bg-panel-elevated"
                 >
                   {t(link.key)}
                 </Link>

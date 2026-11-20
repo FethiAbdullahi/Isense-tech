@@ -66,7 +66,7 @@ export function CameraAnatomy() {
       ref={containerRef}
       className="relative mt-10 h-[250vh] sm:h-[270vh] md:h-[300vh]"
     >
-      <div className="sticky top-20 h-[calc(100svh-5.5rem)] overflow-hidden rounded-[32px] border border-border bg-panel [[data-theme=dark]_&]:bg-[#090b0e]">
+      <div className="sticky top-20 h-[calc(100svh-5.5rem)] overflow-hidden rounded-sm border border-border bg-panel">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_42%_28%,rgba(80,140,255,0.12),transparent_52%)]" />
 
         <div className="relative flex h-full flex-col md:flex-row">

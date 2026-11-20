@@ -31,7 +31,7 @@ export default async function ProductDetailPage({
       <Container className="max-w-4xl">
         <BackLink href="/products" label={cta("back")} />
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div className="overflow-hidden rounded-[28px] border border-border bg-panel">
+          <div className="overflow-hidden rounded-sm border border-border bg-panel">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={product.image}

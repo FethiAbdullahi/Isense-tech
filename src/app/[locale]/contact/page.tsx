@@ -26,7 +26,7 @@ export default async function ContactPage({
         <SectionHeader as="h1" kicker={t("kicker")} title={t("title")} />
         <div className="mt-12 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-6">
-            <div className="rounded-[32px] border border-border bg-panel p-7 md:p-8">
+            <div className="rounded-sm border border-border bg-panel p-7 md:p-8">
               <p className="text-[11px] font-medium tracking-[0.2em] text-accent uppercase">
                 {t("live")}
               </p>
@@ -78,7 +78,7 @@ export default async function ContactPage({
             </div>
             <ContactForm />
           </div>
-          <div className="overflow-hidden rounded-[32px] border border-border bg-panel">
+          <div className="overflow-hidden rounded-sm border border-border bg-panel">
             <iframe
               title={t("mapNote")}
               src={mapUrl}

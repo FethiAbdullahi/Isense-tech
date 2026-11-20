@@ -137,7 +137,6 @@ export function VisionHero() {
         onPointerMove={onPointerMove}
         onPointerLeave={() => setPointer(null)}
       >
-        {/* Shared cover frame: image + HUD share one positioned box */}
         <div
           ref={stageRef}
           className="absolute inset-0 overflow-hidden will-change-transform"
@@ -162,7 +161,7 @@ export function VisionHero() {
                 alt=""
                 className={
                   isNight
-                    ? "absolute inset-0 h-full w-full max-w-none object-fill brightness-[1.85] contrast-[1.16] saturate-[1.14]"
+                    ? "absolute inset-0 h-full w-full max-w-none object-fill brightness-[1.65] contrast-[1.12] saturate-[1.08]"
                     : "absolute inset-0 h-full w-full max-w-none object-fill"
                 }
                 draggable={false}
@@ -175,28 +174,40 @@ export function VisionHero() {
               {isNight ? (
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_50%_at_28%_72%,rgba(190,210,240,0.4),transparent_68%),radial-gradient(ellipse_40%_48%_at_72%_62%,rgba(175,205,235,0.36),transparent_65%)]"
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_45%_at_30%_70%,rgba(240,160,48,0.12),transparent_65%),radial-gradient(ellipse_40%_48%_at_72%_58%,rgba(94,200,216,0.14),transparent_65%)]"
                 />
               ) : null}
             </div>
           ) : null}
         </div>
 
-        <div className="pointer-events-none absolute inset-y-0 start-0 w-[min(28%,10rem)] bg-gradient-to-r from-background/30 via-transparent to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-background/35 to-transparent" />
+        {/* Graphite edge wash — keeps subjects visible */}
+        <div className="pointer-events-none absolute inset-y-0 start-0 w-[min(36%,14rem)] bg-gradient-to-r from-background/80 via-background/25 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background/70 to-transparent" />
 
-        {!reduced && !lite ? (
-          <motion.div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-[22%] h-px bg-gradient-to-r from-transparent via-accent/35 to-transparent"
-            animate={{ top: ["20%", "75%", "20%"] }}
-            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          />
+        {/* Shutter blades — open on load instead of scan-line tropes */}
+        {!reduced ? (
+          <>
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 z-20 h-1/2 origin-top bg-background"
+              initial={{ scaleY: 1 }}
+              animate={{ scaleY: 0 }}
+              transition={{ duration: 1.05, ease: [0.76, 0, 0.24, 1], delay: 0.12 }}
+            />
+            <motion.div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-1/2 origin-bottom bg-background"
+              initial={{ scaleY: 1 }}
+              animate={{ scaleY: 0 }}
+              transition={{ duration: 1.05, ease: [0.76, 0, 0.24, 1], delay: 0.12 }}
+            />
+          </>
         ) : null}
 
         {pointer && !lite && !reduced ? (
           <div
-            className="pointer-events-none absolute size-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/40"
+            className="pointer-events-none absolute size-24 -translate-x-1/2 -translate-y-1/2 border border-signal/50"
             style={{ left: pointer.x, top: pointer.y }}
           />
         ) : null}
@@ -206,33 +217,36 @@ export function VisionHero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-danger opacity-50" />
             <span className="relative inline-flex size-2 rounded-full bg-danger" />
           </span>
-          <p className="rounded-full border border-border/50 bg-background/70 px-3 py-1 font-sans text-[11px] font-medium tracking-[0.16em] text-text-secondary uppercase backdrop-blur">
+          <p className="border border-border bg-panel/90 px-3 py-1 font-mono text-[10px] font-medium tracking-[0.16em] text-text-secondary uppercase">
             {t("caption")}
           </p>
         </div>
       </div>
 
-      <Container className="relative z-30 flex min-h-[100svh] flex-col justify-end pb-24 pt-24 md:justify-start md:pb-28 md:pt-24 lg:pt-28">
+      <Container className="relative z-30 flex min-h-[100svh] flex-col justify-end pb-24 pt-28 md:justify-center md:pb-28 md:pt-24">
         <motion.div
-          className="relative z-10 max-w-md rounded-[28px] border border-border/50 bg-background/95 p-5 shadow-[var(--shadow)] backdrop-blur-xl md:max-w-[22rem] md:p-6"
-          initial={reduced ? false : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="clip-angle relative z-10 max-w-lg border border-border bg-panel/95 p-6 shadow-[var(--shadow)] panel-shear md:max-w-md md:p-7"
+          initial={reduced ? false : { opacity: 0, y: 28, skewX: -3 }}
+          animate={{ opacity: 1, y: 0, skewX: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.45 }}
         >
-          <p className="text-sm font-medium text-accent">{t("eyebrow")}</p>
-          <p className="mt-2 font-display text-[clamp(1.9rem,4.2vw,3.15rem)] leading-[0.92] font-semibold tracking-tight text-foreground">
+          <div className="mb-4 h-px w-12 bg-accent" />
+          <p className="font-mono text-[11px] font-medium tracking-[0.18em] text-accent uppercase">
+            {t("eyebrow")}
+          </p>
+          <p className="mt-3 font-display text-[clamp(2.1rem,4.6vw,3.4rem)] leading-[0.92] font-semibold tracking-tight text-foreground">
             {t("brand")}
-            <span className="mt-1 block font-sans text-[0.34em] font-medium tracking-[0.22em] text-text-secondary uppercase">
+            <span className="mt-1.5 block font-mono text-[0.28em] font-medium tracking-[0.28em] text-text-secondary uppercase">
               {t("brandSub")}
             </span>
           </p>
-          <h1 className="mt-2.5 max-w-md font-display text-[1.35rem] leading-[1.15] tracking-tight text-foreground md:text-[1.65rem] lg:text-[1.85rem]">
+          <h1 className="mt-3 max-w-md font-display text-[1.25rem] leading-[1.2] tracking-tight text-foreground md:text-[1.45rem]">
             {t("title")}
           </h1>
           <p className="mt-2 max-w-sm text-sm leading-snug text-text-secondary md:line-clamp-2">
             {t("subtitle")}
           </p>
-          <div className="mt-4 flex flex-wrap gap-2.5">
+          <div className="mt-5 flex flex-wrap gap-2.5">
             <Link href="/products" className={buttonClass("primary")}>
               {t("explore")}
             </Link>

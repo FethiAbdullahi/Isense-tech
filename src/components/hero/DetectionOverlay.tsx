@@ -184,7 +184,7 @@ export function DetectionOverlay({
         preserveAspectRatio="none"
       >
         {boxes.map((box) => {
-          const stroke = box.danger ? "var(--danger)" : "var(--accent)";
+          const stroke = box.danger ? "var(--danger)" : "var(--signal)";
           const corner = Math.min(0.018, box.w * 0.2, box.h * 0.2);
           return (
             <g key={box.id} opacity={box.opacity}>
@@ -196,7 +196,7 @@ export function DetectionOverlay({
                 fill={
                   box.danger
                     ? "color-mix(in srgb, var(--danger) 12%, transparent)"
-                    : "color-mix(in srgb, var(--accent) 6%, transparent)"
+                    : "color-mix(in srgb, var(--signal) 8%, transparent)"
                 }
                 stroke={stroke}
                 strokeWidth={0.002}
@@ -235,11 +235,11 @@ export function DetectionOverlay({
       {boxes.map((box) => {
         const label = t(`labels.${box.labelKey}`);
         const placement = placeLabelChip(box);
-        const bg = box.danger ? "var(--danger)" : "var(--accent)";
+        const bg = box.danger ? "var(--danger)" : "var(--signal)";
         return (
           <span
             key={`${box.id}-chip`}
-            className="absolute z-10 whitespace-nowrap rounded px-1.5 py-0.5 font-sans text-[9px] leading-none font-semibold tracking-wide text-[var(--on-accent)] shadow-sm md:text-[10px]"
+            className="absolute z-10 whitespace-nowrap rounded-sm px-1.5 py-0.5 font-mono text-[9px] leading-none font-semibold tracking-wide text-[#0a1214] shadow-sm md:text-[10px]"
             style={{
               left: placement.left,
               top: placement.top,

@@ -46,7 +46,7 @@ export default async function CoveragePage({
       <Container>
         <BackLink href="/solutions" label={cta("backSolutions")} />
         <SectionHeader as="h1" kicker={t("kicker")} title={t("title")} lead={t("lead")} />
-        <div className="mt-10 overflow-hidden rounded-[32px] border border-border bg-panel p-4 shadow-[var(--shadow)] md:p-7">
+        <div className="mt-10 overflow-hidden rounded-sm border border-border bg-panel p-4 shadow-[var(--shadow)] md:p-7">
           <CoveragePlanner packages={packages} initialSector={initialSector} />
         </div>
       </Container>

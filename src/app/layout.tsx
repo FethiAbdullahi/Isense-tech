@@ -1,24 +1,32 @@
 import type { Metadata } from "next";
 import {
+  IBM_Plex_Mono,
+  Manrope,
   Noto_Sans_Arabic,
   Noto_Sans_Ethiopic,
-  Plus_Jakarta_Sans,
-  Sora,
+  Syne,
 } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import { themeInitScript } from "@/components/theme/theme-script";
 import { siteConfig } from "../../config/site";
 import "./globals.css";
 
-const sora = Sora({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-syne",
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
   display: "swap",
 });
 
@@ -93,7 +101,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       lang={locale}
       dir={locale === "ar" ? "rtl" : "ltr"}
       data-theme="dark"
-      className={`${sora.variable} ${jakarta.variable} ${notoEthiopic.variable} ${notoArabic.variable} h-full antialiased`}
+      className={`${syne.variable} ${manrope.variable} ${plexMono.variable} ${notoEthiopic.variable} ${notoArabic.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
