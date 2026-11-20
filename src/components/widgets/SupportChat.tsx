@@ -15,7 +15,7 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "../../../config/site";
 import type { AppLocale } from "@/i18n/routing";
@@ -69,6 +69,8 @@ const copy = {
     fallback:
       "The desk is unavailable. Call +251 11 111 4031 or continue on WhatsApp.",
     changeLang: "Change language",
+    moreTopics: "More topics",
+    backToTopics: "Back to topics",
   },
   am: {
     open: "የድጋፍ ውይይት ክፈት",
@@ -108,6 +110,8 @@ const copy = {
     fallback:
       "ድጋፍ አይገኝም። +251 11 111 4031 ይደውሉ ወይም በWhatsApp ይቀጥሉ።",
     changeLang: "ቋንቋ ቀይር",
+    moreTopics: "ተጨማሪ ርዕሶች",
+    backToTopics: "ወደ ርዕሶች ተመለስ",
   },
   ar: {
     open: "فتح دردشة الدعم",
@@ -147,6 +151,8 @@ const copy = {
     fallback:
       "المكتب غير متاح. اتصل على +251 11 111 4031 أو تابع على واتساب.",
     changeLang: "تغيير اللغة",
+    moreTopics: "مواضيع أخرى",
+    backToTopics: "العودة إلى المواضيع",
   },
 } as const;
 
@@ -166,11 +172,10 @@ const CHAT_STATE_KEY = "isense-support-chat";
 
 export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
   const siteLocale = useLocale() as AppLocale;
-  const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<Step>("language");
   const [picked, setPicked] = useState<AppLocale>(siteLocale);
+  // Chat language is local to this widget — never changes the site locale.
   const [chatLocale, setChatLocale] = useState<AppLocale>(siteLocale);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -180,21 +185,16 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const wa = whatsappUrl || siteConfig.whatsappUrl;
   const t = copy[chatLocale];
+  const siteT = copy[siteLocale];
   const rtl = chatLocale === "ar";
 
   useEffect(() => {
     try {
       const raw = sessionStorage.getItem(CHAT_STATE_KEY);
       if (raw) {
-        const saved = JSON.parse(raw) as {
-          open?: boolean;
-          step?: Step;
-          chatLocale?: AppLocale;
-        };
-        if (saved.open) setOpen(true);
-        if (saved.step === "chat" || saved.step === "language") {
-          setStep(saved.step);
-        }
+        const saved = JSON.parse(raw) as { chatLocale?: AppLocale };
+        // Remember preferred language for the radio default only —
+        // every open still starts on the language step, then topics.
         if (saved.chatLocale && copy[saved.chatLocale]) {
           setChatLocale(saved.chatLocale);
           setPicked(saved.chatLocale);
@@ -211,12 +211,12 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
     try {
       sessionStorage.setItem(
         CHAT_STATE_KEY,
-        JSON.stringify({ open, step, chatLocale }),
+        JSON.stringify({ chatLocale }),
       );
     } catch {
       // ignore
     }
-  }, [open, step, chatLocale, hydrated]);
+  }, [chatLocale, hydrated]);
 
   useEffect(() => {
     if (!open) return;
@@ -248,14 +248,12 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
     setStep("chat");
     setMessages([]);
     setShowTopics(true);
-    if (locale !== siteLocale) {
-      router.replace(pathname, { locale });
-    }
   }
 
-  async function askFaq(id: FaqId) {
+  function askFaq(id: FaqId) {
     const question = t.faq[id];
     const answer = t.answers[id];
+    setShowTopics(false);
     setMessages((current) => [
       ...current,
       { role: "user", content: question },
@@ -266,13 +264,13 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
         hrefLabel: t.openPage[id],
       },
     ]);
-    setShowTopics(true);
   }
 
   async function sendText(text: string) {
     const trimmed = text.trim();
     if (!trimmed || busy) return;
     setInput("");
+    setShowTopics(false);
     setMessages((current) => [...current, { role: "user", content: trimmed }]);
     setBusy(true);
     try {
@@ -291,13 +289,25 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
     }
   }
 
+  function revealTopics() {
+    setShowTopics(true);
+  }
+
   return (
     <>
       <motion.button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setStep("language");
+          setMessages([]);
+          setShowTopics(true);
+          setInput("");
+          setBusy(false);
+          setPicked(chatLocale);
+          setOpen(true);
+        }}
         className="group fixed bottom-5 end-5 z-40 flex size-14 items-center justify-center rounded-full border border-cyan-400/40 bg-[radial-gradient(circle_at_30%_20%,rgba(56,189,248,0.35),transparent_55%),linear-gradient(145deg,#0b1220,#10243a)] text-cyan-100 shadow-[0_0_0_1px_rgba(56,189,248,0.15),0_12px_40px_rgba(8,47,73,0.55)]"
-        aria-label={t.open}
+        aria-label={siteT.open}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.96 }}
       >
@@ -313,11 +323,18 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
             aria-modal="true"
             aria-label={t.camLabel}
             dir={rtl ? "rtl" : "ltr"}
+            lang={chatLocale}
             initial={{ opacity: 0, y: 18, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.96 }}
             transition={{ type: "spring", stiffness: 380, damping: 28 }}
-            className="fixed bottom-[5.25rem] end-5 z-50 flex h-[min(34rem,calc(100dvh-7rem))] w-[min(23.5rem,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[22px] border border-cyan-400/25 bg-[linear-gradient(165deg,rgba(8,15,28,0.97),rgba(12,28,48,0.96))] text-slate-100 shadow-[0_0_0_1px_rgba(56,189,248,0.12),0_24px_80px_rgba(2,8,20,0.65)] backdrop-blur-xl"
+            className={cn(
+              "fixed bottom-[5.25rem] end-5 z-50 flex h-[min(34rem,calc(100dvh-7rem))] w-[min(23.5rem,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[22px] border border-cyan-400/25 bg-[linear-gradient(165deg,rgba(8,15,28,0.97),rgba(12,28,48,0.96))] text-slate-100 shadow-[0_0_0_1px_rgba(56,189,248,0.12),0_24px_80px_rgba(2,8,20,0.65)] backdrop-blur-xl",
+              chatLocale === "am" &&
+                "[font-family:var(--font-noto-ethiopic),sans-serif]",
+              chatLocale === "ar" &&
+                "[font-family:var(--font-noto-arabic),sans-serif]",
+            )}
           >
             <div
               aria-hidden
@@ -430,14 +447,16 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
                 </div>
               ) : (
                 <>
-                  <div className="rounded-2xl border border-cyan-400/15 bg-white/[0.03] p-3.5">
-                    <p className="text-sm font-semibold text-white">
-                      {t.greeting}
-                    </p>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-400">
-                      {t.greetingLead}
-                    </p>
-                  </div>
+                  {messages.length === 0 ? (
+                    <div className="rounded-2xl border border-cyan-400/15 bg-white/[0.03] p-3.5">
+                      <p className="text-sm font-semibold text-white">
+                        {t.greeting}
+                      </p>
+                      <p className="mt-1 text-xs leading-relaxed text-slate-400">
+                        {t.greetingLead}
+                      </p>
+                    </div>
+                  ) : null}
 
                   {messages.map((message, index) => (
                     <div
@@ -463,10 +482,23 @@ export function SupportChat({ whatsappUrl }: { whatsappUrl?: string }) {
                     </div>
                   ))}
 
+                  {!showTopics && messages.length > 0 ? (
+                    <button
+                      type="button"
+                      onClick={revealTopics}
+                      className="mx-auto flex items-center gap-1.5 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3.5 py-2 text-xs font-semibold text-cyan-100 transition hover:border-cyan-300/50 hover:bg-cyan-400/15"
+                    >
+                      {t.backToTopics}
+                      <ChevronRight
+                        className={cn("size-3.5", rtl && "rotate-180")}
+                      />
+                    </button>
+                  ) : null}
+
                   {showTopics ? (
                     <div className="space-y-2 pt-1">
                       <p className="font-mono text-[10px] tracking-[0.16em] text-cyan-300/70">
-                        {t.topics}
+                        {messages.length > 0 ? t.moreTopics : t.topics}
                       </p>
                       <div className="grid gap-2">
                         {topics.map((topic) => {

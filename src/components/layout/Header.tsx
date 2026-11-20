@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "../../../config/site";
 import { cn } from "@/lib/utils";
+import { shellClassName } from "@/components/ui/Container";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
@@ -70,7 +71,7 @@ export function Header() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-14 max-w-[1120px] items-center justify-between gap-4 px-5 md:h-16 md:px-8">
+      <div className={cn(shellClassName, "flex h-14 items-center justify-between gap-4 md:h-16")}>
         <Link href="/" className="relative z-10 shrink-0" onClick={() => setOpen(false)}>
           <Image
             src="/logo.png"
