@@ -44,6 +44,40 @@ export const metadata: Metadata = {
   description:
     "iSense Technologies by Ellis Trading House PLC — Ethiopian IP security solutions with 15+ years of experience.",
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo-full.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico",
+  },
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} | IP Security Solutions Ethiopia`,
+    description:
+      "iSense Technologies by Ellis Trading House PLC — Ethiopian IP security solutions with 15+ years of experience.",
+    url: siteConfig.url,
+    images: [
+      {
+        url: new URL("/og.png", siteConfig.url).toString(),
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — ${siteConfig.tagline}`,
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | IP Security Solutions Ethiopia`,
+    description:
+      "iSense Technologies by Ellis Trading House PLC — Ethiopian IP security solutions with 15+ years of experience.",
+    images: [new URL("/og.png", siteConfig.url).toString()],
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

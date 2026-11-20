@@ -7,6 +7,8 @@ export function OrganizationJsonLd() {
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
+    logo: `${siteConfig.url}/logo-full.png`,
+    image: `${siteConfig.url}/og.png`,
     email: siteConfig.email,
     telephone: siteConfig.phoneTel,
     foundingDate: String(siteConfig.founded),

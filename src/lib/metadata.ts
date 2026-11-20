@@ -26,6 +26,15 @@ export function pageMetadata({
   description: string;
   path?: string;
 }): Metadata {
+  const imageUrl = new URL("/og.png", siteConfig.url).toString();
+  const image = {
+    url: imageUrl,
+    width: 1200,
+    height: 630,
+    alt: `${siteConfig.name} — ${siteConfig.tagline}`,
+    type: "image/png" as const,
+  };
+
   return {
     title,
     description,
@@ -37,6 +46,13 @@ export function pageMetadata({
       siteName: siteConfig.name,
       locale: "en_US",
       type: "website",
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }
